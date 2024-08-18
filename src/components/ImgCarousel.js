@@ -1,12 +1,23 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-export const ImgCarousel = ({images, currentIndex, handleNext, handlePrev}) => {
-  return (
-    <div className='carousel'>
-        <button onClick={handlePrev}>Prev</button>
-        <img src={images[currentIndex]} className='carousel-img' alt='carousel-img' />
-        <button onClick={handleNext}>Next</button>
-    </div>
-  )
+
+export const ImgCarousel = (images) => {
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
+
+  const handleNext = ()=>{
+    setCurrentImgIndex((prevIndex)=> (prevIndex+1)%images.length)
+  }
+
+  const handlePrev = () =>{
+    setCurrentImgIndex((prevIndex)=> (prevIndex-1+images.length)%images.length)
+  }
+return {
+  currentImgIndex,
+  handleNext,
+  handlePrev
 }
+}
+
+
+
 

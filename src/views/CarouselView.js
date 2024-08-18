@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { ImgCarousel } from '../components/ImgCarousel'
+import ImgCarouselView from '../components/ImgCarouselView'
 
 const CarouselView = () => {
     const [images, setImages] = useState([
@@ -9,17 +10,11 @@ const CarouselView = () => {
 
     ])
 
-    const handleNext = ()=>{
-        console.log('next image')
-    }
-
-    const handlePrev = () =>{
-        console.log('prev image')
-    }
+const {currentImgIndex, handleNext, handlePrev} = ImgCarousel(images);
   return (
-    <ImgCarousel 
+    <ImgCarouselView 
     images={images}
-    currentIndex={1}
+    currentIndex={currentImgIndex}
     handleNext={handleNext}
     handlePrev={handlePrev} />
   )
